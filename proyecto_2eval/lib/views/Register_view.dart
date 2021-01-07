@@ -16,13 +16,10 @@ class _Register extends State<Register> {
       appBar: AppBar(
         title: Text("Register"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            WidgetRegister(),
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          WidgetRegister(),
+        ],
       ),
     );
   }
