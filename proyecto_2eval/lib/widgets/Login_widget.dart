@@ -7,7 +7,6 @@ class WidgetLogin extends StatefulWidget {
 }
 
 class _WidgetLogin extends State<WidgetLogin> {
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -21,19 +20,22 @@ class _WidgetLogin extends State<WidgetLogin> {
           SizedBox(height: 10),
           Container(
             width: 350,
-            //decoration: BoxDecoration(
-            //  color: Colors.lightGreen,
-            //  borderRadius: BorderRadius.circular(10.0),
-            //), 
             child: Column(
               children: [
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(
-                      color: Colors.white,
-                      decorationColor: Colors.white,
+                    color: Colors.white,
+                    decorationColor: Colors.white,
                   ),
                   decoration: InputDecoration(
+                    labelText: "Email:",
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 19,
+                      fontStyle: FontStyle.italic,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.black,
@@ -42,8 +44,12 @@ class _WidgetLogin extends State<WidgetLogin> {
                     ),
                     fillColor: Colors.grey[850].withOpacity(0.7),
                     filled: true,
-                    hintText: 'Enter your email',
-                    hintStyle: TextStyle(color: Colors.white),
+                    hintText: 'platano@gmail.com',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -56,10 +62,17 @@ class _WidgetLogin extends State<WidgetLogin> {
                 TextFormField(
                   obscureText: true,
                   style: TextStyle(
-                      color: Colors.white,
-                      decorationColor: Colors.white,
+                    color: Colors.white,
+                    decorationColor: Colors.white,
                   ),
                   decoration: InputDecoration(
+                    labelText: "Password:",
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 19,
+                      fontStyle: FontStyle.italic,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.black,
@@ -68,10 +81,6 @@ class _WidgetLogin extends State<WidgetLogin> {
                     ),
                     fillColor: Colors.grey[850].withOpacity(0.7),
                     filled: true,
-                    hintText: 'Enter your password',
-                    hintStyle: TextStyle(
-                      color: Colors.white,
-                    )
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -86,13 +95,13 @@ class _WidgetLogin extends State<WidgetLogin> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Row(
-              mainAxisAlignment:MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text('Processing Data')));
+                      Scaffold.of(context).showSnackBar(
+                          SnackBar(content: Text('Processing Data')));
                     }
                   },
                   child: Text('Iniciar Sesión'),
@@ -101,11 +110,11 @@ class _WidgetLogin extends State<WidgetLogin> {
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text('Processing Data')));
+                      Scaffold.of(context).showSnackBar(
+                          SnackBar(content: Text('Processing Data')));
                     }
                   },
-                  child: Text('Registrarse'),
+                  child: Text('No tengo cuenta'),
                 ),
               ],
             ),

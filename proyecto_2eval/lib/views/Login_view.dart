@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import '../widgets/Login_widget.dart';
 
 class Login extends StatefulWidget {
-  Login({Key key}) : super(key: key);
+  Login({Key key, AssetImage fondo}) : super(key: key);
+
+  final AssetImage fondo = AssetImage("assets/images/fondo.jpeg");
 
   @override
   _Login createState() => _Login();
@@ -21,7 +23,7 @@ class _Login extends State<Login> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/fondo.jpeg"),
+              image: widget.fondo,
               fit: BoxFit.cover,
             ),
           ),
@@ -29,9 +31,9 @@ class _Login extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                color: Colors.grey[100].withOpacity(0.7),
-                child: WidgetLogin()
-              )
+                  alignment: Alignment.center,
+                  color: Colors.grey[100].withOpacity(0.7),
+                  child: WidgetLogin())
             ],
           ),
         ),
