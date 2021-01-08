@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../views/Register_view.dart';
+
 class WidgetLogin extends StatefulWidget {
   const WidgetLogin({Key key}) : super(key: key);
   _WidgetLogin createState() => _WidgetLogin();
@@ -99,20 +101,24 @@ class _WidgetLogin extends State<WidgetLogin> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      Scaffold.of(context).showSnackBar(
-                          SnackBar(content: Text('Processing Data')));
-                    }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => /*Game(data: data),*/ Register(),
+                      ),
+                    );
                   },
                   child: Text('Iniciar Sesión'),
                 ),
                 SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      Scaffold.of(context).showSnackBar(
-                          SnackBar(content: Text('Processing Data')));
-                    }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Register(),
+                      ),
+                    );
                   },
                   child: Text('No tengo cuenta'),
                 ),
