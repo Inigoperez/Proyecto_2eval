@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_2eval/views/Home_view.dart';
-import 'package:proyecto_2eval/views/Register_view.dart';
-
-import 'views/Home_view.dart';
+import 'package:proyecto_2eval/views/Login_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: "Demo"),
+      home: Login(),
       //home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

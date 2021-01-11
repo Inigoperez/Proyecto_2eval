@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:proyecto_2eval/views/Route_selection_view.dart';
 
 import '../views/Register_view.dart';
 
@@ -9,13 +10,9 @@ class WidgetLogin extends StatefulWidget {
 }
 
 class _WidgetLogin extends State<WidgetLogin> {
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
     return Form(
-      key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -104,7 +101,7 @@ class _WidgetLogin extends State<WidgetLogin> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => /*Game(data: data),*/ Register(),
+                        builder: (context) => RouteSelection(),
                       ),
                     );
                   },
