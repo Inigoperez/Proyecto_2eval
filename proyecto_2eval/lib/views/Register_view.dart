@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:proyecto_2eval/widgets/Register_widget.dart';
 
 class Register extends StatefulWidget {
-  Register({Key key, AssetImage fondo, GlobalKey<FormState> datos})
-      : super(key: key);
+  Register({Key key, AssetImage fondo}) : super(key: key);
 
   final AssetImage fondo = AssetImage("assets/images/fondo.jpeg");
 

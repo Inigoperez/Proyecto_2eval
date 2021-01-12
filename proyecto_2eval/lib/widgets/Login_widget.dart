@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto_2eval/views/Route_selection_view.dart';
+import 'package:proyecto_2eval/Controllers/LoginController.dart';
 
 import '../views/Register_view.dart';
 
@@ -10,6 +10,8 @@ class WidgetLogin extends StatefulWidget {
 }
 
 class _WidgetLogin extends State<WidgetLogin> {
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -22,6 +24,7 @@ class _WidgetLogin extends State<WidgetLogin> {
             child: Column(
               children: [
                 TextFormField(
+                  controller: emailcontroller,
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(
                     color: Colors.white,
@@ -59,6 +62,7 @@ class _WidgetLogin extends State<WidgetLogin> {
                 ),
                 SizedBox(height: 10),
                 TextFormField(
+                  controller: passwordcontroller,
                   obscureText: true,
                   style: TextStyle(
                     color: Colors.white,
@@ -101,7 +105,10 @@ class _WidgetLogin extends State<WidgetLogin> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RouteSelection(),
+                        builder: (context) => login(
+                          emailcontroller.text,
+                          passwordcontroller.text,
+                        ),
                       ),
                     );
                   },
