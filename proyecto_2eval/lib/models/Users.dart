@@ -1,24 +1,28 @@
+////////////////////////////////////////
+////////-- CLASE DE USUARIOS --/////////
+////////////////////////////////////////
+
 class Users {
-  String username;
+  String name;
   String email;
   String password;
 
-  Users({this.username, this.email, this.password});
+  Users({this.name, this.email, this.password});
 
-  set setusername(String newusername) {
-    this.username = newusername;
+  set setusername(String newname) {
+    this.name = newname;
   }
 
   set setemail(String newemail) {
-    this.username = newemail;
+    this.name = newemail;
   }
 
   set setpassword(String newpassword) {
     this.password = newpassword;
   }
 
-  String get getusername {
-    return username;
+  String get getname {
+    return name;
   }
 
   String get getemail {
