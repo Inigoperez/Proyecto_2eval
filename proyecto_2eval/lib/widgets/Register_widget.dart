@@ -1,3 +1,4 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_2eval/views/Login_view.dart';
@@ -78,63 +79,67 @@ class _WidgetRegister extends State<WidgetRegister> {
                 )),
             SizedBox(height: 20),
             TextFormField(
-                controller: password1controller,
-                obscureText: true,
-                style: TextStyle(
-                  color: Colors.white,
-                  decorationColor: Colors.white,
+              controller: password1controller,
+              obscureText: true,
+              style: TextStyle(
+                color: Colors.white,
+                decorationColor: Colors.white,
+              ),
+              decoration: InputDecoration(
+                labelText: "Password:",
+                labelStyle: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 19,
+                  fontStyle: FontStyle.italic,
                 ),
-                decoration: InputDecoration(
-                  labelText: "Password:",
-                  labelStyle: TextStyle(
+                icon: Icon(Icons.vpn_key_outlined),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 19,
-                    fontStyle: FontStyle.italic,
                   ),
-                  icon: Icon(Icons.vpn_key_outlined),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  fillColor: Colors.grey[850].withOpacity(0.7),
-                  filled: true,
-                  hintStyle: TextStyle(color: Colors.white),
-                )),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                fillColor: Colors.grey[850].withOpacity(0.7),
+                filled: true,
+                hintStyle: TextStyle(color: Colors.white),
+              ),
+            ),
             SizedBox(height: 20),
             TextFormField(
-                controller: password2controller,
-                obscureText: true,
-                style: TextStyle(
-                  color: Colors.white,
-                  decorationColor: Colors.white,
+              controller: password2controller,
+              obscureText: true,
+              style: TextStyle(
+                color: Colors.white,
+                decorationColor: Colors.white,
+              ),
+              decoration: InputDecoration(
+                labelText: "Repeat password:",
+                labelStyle: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 19,
+                  fontStyle: FontStyle.italic,
                 ),
-                decoration: InputDecoration(
-                  labelText: "Repeat password:",
-                  labelStyle: TextStyle(
+                icon: Icon(Icons.vpn_key_outlined),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 19,
-                    fontStyle: FontStyle.italic,
                   ),
-                  icon: Icon(Icons.vpn_key_outlined),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                    ),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  fillColor: Colors.grey[850].withOpacity(0.7),
-                  filled: true,
-                )),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                fillColor: Colors.grey[850].withOpacity(0.7),
+                filled: true,
+              ),
+            ),
             SizedBox(height: 20),
             RaisedButton(
               color: Colors.blue,
               child: Text("Registrarse"),
               onPressed: () {
-                if (password1controller.text == password2controller.text) {
+                if (password1controller.text == password2controller.text &&
+                    emailcontroller.text.isNotEmpty &&
+                    usernamecontroller.text.isNotEmpty) {
                   registro(
                     emailcontroller.text,
                     password1controller.text,
@@ -150,6 +155,8 @@ class _WidgetRegister extends State<WidgetRegister> {
                       );
                     }
                   });
+                } else {
+                  errorDatos(context);
                 }
               },
             ),
@@ -158,4 +165,31 @@ class _WidgetRegister extends State<WidgetRegister> {
       ),
     );
   }
+}
+
+void errorDatos(BuildContext context) {
+  Flushbar(
+    padding: EdgeInsets.all(10),
+    borderRadius: 8,
+    backgroundGradient: LinearGradient(
+      colors: [Colors.red, Colors.redAccent],
+      stops: [0.6, 1],
+    ),
+    boxShadows: [
+      BoxShadow(
+        color: Colors.black45,
+        offset: Offset(3, 3),
+        blurRadius: 3,
+      ),
+    ],
+    // All of the previous Flushbars could be dismissed by swiping down
+    // now we want to swipe to the sides
+    dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+    // The default curve is Curves.easeOut
+    forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
+    duration: Duration(seconds: 8),
+    title: 'Inserte todos los datos bien.',
+    message:
+        'Acuerdate de insertar todos los datos correctamente, las contraseñas deven coincidir',
+  )..show(context);
 }

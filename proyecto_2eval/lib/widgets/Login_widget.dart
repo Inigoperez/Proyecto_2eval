@@ -1,3 +1,4 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_2eval/Controllers/LoginController.dart';
@@ -104,18 +105,23 @@ class _WidgetLogin extends State<WidgetLogin> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    login(emailcontroller.text, passwordcontroller.text)
-                        .then((value) {
-                      if (value == true) {
-                        print(value);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => RouteSelection(),
-                          ),
-                        );
-                      }
-                    });
+                    if (emailcontroller.text.isNotEmpty &&
+                        passwordcontroller.text.isNotEmpty) {
+                      login(emailcontroller.text, passwordcontroller.text)
+                          .then((value) {
+                        if (value == true) {
+                          print(value);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RouteSelection(),
+                            ),
+                          );
+                        }
+                      });
+                    } else {
+                      errorDatos(context);
+                    }
                   },
                   child: Text('Iniciar Sesión'),
                 ),
@@ -139,4 +145,30 @@ class _WidgetLogin extends State<WidgetLogin> {
       ),
     );
   }
+}
+
+void errorDatos(BuildContext context) {
+  Flushbar(
+    padding: EdgeInsets.all(10),
+    borderRadius: 8,
+    backgroundGradient: LinearGradient(
+      colors: [Colors.red, Colors.redAccent],
+      stops: [0.6, 1],
+    ),
+    boxShadows: [
+      BoxShadow(
+        color: Colors.black45,
+        offset: Offset(3, 3),
+        blurRadius: 3,
+      ),
+    ],
+    // All of the previous Flushbars could be dismissed by swiping down
+    // now we want to swipe to the sides
+    dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+    // The default curve is Curves.easeOut
+    forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
+    duration: Duration(seconds: 8),
+    title: 'Inserte todos los datos correctamente.',
+    message: 'Acuerdate de insertar todos los datos correctamente.',
+  )..show(context);
 }
