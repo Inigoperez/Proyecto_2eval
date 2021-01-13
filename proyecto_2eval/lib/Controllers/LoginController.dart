@@ -53,5 +53,6 @@ Future<bool> registro(String email, String password, String username) async {
   }
   return regis;
 }
-
 ////////-- Cierre función registro --/////////////////
+//////////////////////////////////////////////////////
+////////--  --//////////////
