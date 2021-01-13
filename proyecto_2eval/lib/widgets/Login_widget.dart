@@ -13,7 +13,7 @@ class WidgetLogin extends StatefulWidget {
 class _WidgetLogin extends State<WidgetLogin> {
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
-  final bool verdad = true;
+
   @override
   Widget build(BuildContext context) {
     return Form(

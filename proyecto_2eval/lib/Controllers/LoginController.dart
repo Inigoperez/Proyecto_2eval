@@ -37,7 +37,7 @@ Future<bool> registro(String email, String password, String username) async {
       email +
       '&password=' +
       password;
-  final response = await http.get('$url');
+  final response = await http.post('$url');
   print(response.statusCode);
   if (response.statusCode == 200) {
     if (response.body == 'true') {

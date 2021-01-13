@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_2eval/views/Login_view.dart';
+import 'package:proyecto_2eval/Controllers/LoginController.dart';
 
 class WidgetRegister extends StatefulWidget {
   const WidgetRegister({Key key}) : super(key: key);
@@ -8,12 +9,14 @@ class WidgetRegister extends StatefulWidget {
 }
 
 class _WidgetRegister extends State<WidgetRegister> {
-  final _formKey = GlobalKey<FormState>();
+  final TextEditingController usernamecontroller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController password1controller = TextEditingController();
+  final TextEditingController password2controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
       child: Container(
         width: 350,
         child: Column(
@@ -21,6 +24,7 @@ class _WidgetRegister extends State<WidgetRegister> {
           children: [
             SizedBox(height: 20),
             TextFormField(
+              controller: usernamecontroller,
               style: TextStyle(
                 color: Colors.white,
                 decorationColor: Colors.white,
@@ -47,11 +51,12 @@ class _WidgetRegister extends State<WidgetRegister> {
             ),
             SizedBox(height: 20),
             TextFormField(
+                controller: emailcontroller,
+                keyboardType: TextInputType.emailAddress,
                 style: TextStyle(
                   color: Colors.white,
                   decorationColor: Colors.white,
                 ),
-                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: "Email:",
                   labelStyle: TextStyle(
@@ -73,11 +78,12 @@ class _WidgetRegister extends State<WidgetRegister> {
                 )),
             SizedBox(height: 20),
             TextFormField(
+                controller: password1controller,
+                obscureText: true,
                 style: TextStyle(
                   color: Colors.white,
                   decorationColor: Colors.white,
                 ),
-                obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Password:",
                   labelStyle: TextStyle(
@@ -99,11 +105,12 @@ class _WidgetRegister extends State<WidgetRegister> {
                 )),
             SizedBox(height: 20),
             TextFormField(
+                controller: password2controller,
+                obscureText: true,
                 style: TextStyle(
                   color: Colors.white,
                   decorationColor: Colors.white,
                 ),
-                obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Repeat password:",
                   labelStyle: TextStyle(
@@ -127,19 +134,23 @@ class _WidgetRegister extends State<WidgetRegister> {
               color: Colors.blue,
               child: Text("Registrarse"),
               onPressed: () {
-                login(emailcontroller.text, passwordcontroller.text)
-                    .then((value) {
-                  if (value == true) {
-                    print(value);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Login(),
-                      ),
-                    );
-                  }
-                });
-                print("Registrarse");
+                if (password1controller.text == password2controller.text) {
+                  registro(
+                    emailcontroller.text,
+                    password1controller.text,
+                    usernamecontroller.text,
+                  ).then((value) {
+                    if (value == true) {
+                      print(value);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ),
+                      );
+                    }
+                  });
+                }
               },
             ),
           ],
