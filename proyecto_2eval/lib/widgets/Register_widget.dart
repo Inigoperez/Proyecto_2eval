@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:proyecto_2eval/views/Login_view.dart';
 
 class WidgetRegister extends StatefulWidget {
   const WidgetRegister({Key key}) : super(key: key);
@@ -126,6 +127,18 @@ class _WidgetRegister extends State<WidgetRegister> {
               color: Colors.blue,
               child: Text("Registrarse"),
               onPressed: () {
+                login(emailcontroller.text, passwordcontroller.text)
+                    .then((value) {
+                  if (value == true) {
+                    print(value);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Login(),
+                      ),
+                    );
+                  }
+                });
                 print("Registrarse");
               },
             ),

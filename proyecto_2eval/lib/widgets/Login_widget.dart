@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_2eval/Controllers/LoginController.dart';
+import 'package:proyecto_2eval/views/Route_selection_view.dart';
 
 import '../views/Register_view.dart';
 
@@ -12,6 +13,7 @@ class WidgetLogin extends StatefulWidget {
 class _WidgetLogin extends State<WidgetLogin> {
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
+  final bool verdad = true;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -102,15 +104,18 @@ class _WidgetLogin extends State<WidgetLogin> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => login(
-                          emailcontroller.text,
-                          passwordcontroller.text,
-                        ),
-                      ),
-                    );
+                    login(emailcontroller.text, passwordcontroller.text)
+                        .then((value) {
+                      if (value == true) {
+                        print(value);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RouteSelection(),
+                          ),
+                        );
+                      }
+                    });
                   },
                   child: Text('Iniciar Sesión'),
                 ),
