@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto_2eval/widgets/map.dart';
+import 'package:proyecto_2eval/models/Rutas.dart';
+import 'package:proyecto_2eval/widgets/Map_widget.dart';
 
 class Game extends StatefulWidget {
-  Game({Key key}) : super(key: key);
-
+  Game(Future<Rutas> ruta, {Key key}) : super(key: key);
   @override
   _GameState createState() => _GameState();
 }

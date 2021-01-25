@@ -7,10 +7,14 @@ Users userLogeado;
 ///////-- Iniciio función inicio de sesión --/////////
 Future<bool> login(String email, String password) async {
   bool acces = false;
-  final String url = 'http://10.10.12.133:8080/usuario/login?email=' +
+  /*final String url = 'http://10.10.12.133:8080/usuario/login?email=' +
       email +
       '&password=' +
-      password;
+      password;*/
+  final String url = 'http://192.168.1.119:8080/usuario/login?email=' +
+  email +
+  '&password=' +
+  password;
 
   final response = await http.get('$url');
   print(response.statusCode);
