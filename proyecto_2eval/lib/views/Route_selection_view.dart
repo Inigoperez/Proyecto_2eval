@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:proyecto_2eval/controllers/LoginController.dart';
 import 'package:proyecto_2eval/models/Users.dart';
 
+import 'Game_view.dart';
+
 class RouteSelection extends StatefulWidget {
   RouteSelection(Future<Users> username, {Key key}) : super(key: key);
 
@@ -22,7 +24,14 @@ class _RouteSelectionState extends State<RouteSelection> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Pagina Route Selection"),
-            Text(userLogeado.email),
+            FloatingActionButton(onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Game(),
+                ),
+              );
+            })
           ],
         ),
       ),
