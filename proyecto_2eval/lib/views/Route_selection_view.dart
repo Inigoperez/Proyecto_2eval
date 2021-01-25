@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:proyecto_2eval/controllers/LoginController.dart';
+import 'package:proyecto_2eval/models/Users.dart';
 
 class RouteSelection extends StatefulWidget {
-  RouteSelection({Key key}) : super(key: key);
+  RouteSelection(Future<Users> username, {Key key}) : super(key: key);
 
   @override
   _RouteSelectionState createState() => _RouteSelectionState();
@@ -20,6 +22,7 @@ class _RouteSelectionState extends State<RouteSelection> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Pagina Route Selection"),
+            Text(userLogeado.email),
           ],
         ),
       ),

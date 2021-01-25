@@ -1,9 +1,9 @@
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto_2eval/Controllers/LoginController.dart';
-import 'package:proyecto_2eval/views/Route_selection_view.dart';
 
+import 'package:proyecto_2eval/controllers/LoginController.dart';
+import 'package:proyecto_2eval/views/Route_selection_view.dart';
 import '../views/Register_view.dart';
 
 class WidgetLogin extends StatefulWidget {
@@ -114,7 +114,9 @@ class _WidgetLogin extends State<WidgetLogin> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RouteSelection(),
+                              builder: (context) => RouteSelection(
+                                getUser(emailcontroller.text),
+                              ),
                             ),
                           );
                         }

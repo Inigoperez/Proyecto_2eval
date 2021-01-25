@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:proyecto_2eval/models/Users.dart';
+
+Users userLogeado;
 
 ///////-- Iniciio función inicio de sesión --/////////
 Future<bool> login(String email, String password) async {
@@ -25,9 +28,9 @@ Future<bool> login(String email, String password) async {
   }
   return acces;
 }
-
 ///////-- Cierre función inicio de sesión --//////////
 //////////////////////////////////////////////////////
+
 ////////-- Inicio función de registro --//////////////
 Future<bool> registro(String email, String password, String username) async {
   bool regis = false;
@@ -37,6 +40,7 @@ Future<bool> registro(String email, String password, String username) async {
       email +
       '&password=' +
       password;
+
   final response = await http.post('$url');
   print(response.statusCode);
   if (response.statusCode == 200) {
@@ -55,4 +59,28 @@ Future<bool> registro(String email, String password, String username) async {
 }
 ////////-- Cierre función registro --/////////////////
 //////////////////////////////////////////////////////
-////////--  --//////////////
+
+//////////////-- Get Username --////////////////////
+Future<String> getUsername(String email) async {
+  final String url =
+      'http://10.10.12.133:8080/usuario/GetUsername?email=' + email;
+  final response = await http.get('$url');
+  if (response.statusCode == 200) {
+    return response.body;
+  } else {
+    return "error" + response.statusCode.toString();
+  }
+}
+
+//////////////-- Get User --//////////////7//////
+Future<Users> getUser(String email) async {
+  final String url = 'http://10.10.12.133:8080/usuario/GetUser?email=' + email;
+  final response = await http.get('$url');
+  if (response.statusCode == 200) {
+    Map<String, dynamic> user = jsonDecode(response.body);
+    userLogeado = Users.fromJson(user);
+    return userLogeado;
+  } else {
+    return userLogeado;
+  }
+}
