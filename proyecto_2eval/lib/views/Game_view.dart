@@ -29,23 +29,37 @@ class _GameState extends State<Game> {
               children: [
                 Expanded(
                   child: Container(
-                    height: 50,
+                    height: 60,
                     color: Colors.red,
-                    child: Center(child: Text("asdkfksj")),
+                    child: Center(child: Text("Puntuaje")),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    height: 50,
+                    height: 60,
                     color: Colors.green,
-                    child: Center(child: Text("Ruta del rosco")),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Nombre ruta"),
+
+                        ///Todos estos datos vienen de la ventana anterior///
+                        Text("Km de ruta"),
+
+                        ///Todos estos datos vienen de la ventana anterior///
+                        Text("Tiempo estimado"),
+
+                        ///Todos estos datos vienen de la ventana anterior///
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    height: 50,
+                    height: 60,
                     color: Colors.grey,
-                    child: Center(child: Text("container3")),
+                    child: Center(child: Text("Cronometro")),
                   ),
                 ),
               ],
@@ -59,10 +73,11 @@ class _GameState extends State<Game> {
                     animation: true,
                     lineHeight: 20.0,
                     animationDuration: 2000,
-                    percent: 0.0,
+                    percent: 0.10,
                     center: Text("Completado - 00.0%"),
                     linearStrokeCap: LinearStrokeCap.roundAll,
-                    progressColor: Colors.greenAccent,
+                    progressColor: Colors.green,
+                    backgroundColor: Colors.greenAccent[100],
                   ),
                 ),
               ],
