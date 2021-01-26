@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_2eval/Controllers/PuntosController.dart';
-import 'package:proyecto_2eval/controllers/LoginController.dart';
 import 'package:proyecto_2eval/models/Users.dart';
 
 import 'Game_view.dart';
@@ -30,7 +29,7 @@ class _RouteSelectionState extends State<RouteSelection> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => Game(
-                    getRuta('5fe359722c680a51d5753c8e')
+                    ruta: getRuta('5fe359722c680a51d5753c8e'),
                   ),
                 ),
               );
