@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_2eval/models/Rutas.dart';
 import 'package:proyecto_2eval/widgets/Map_widget.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 // ignore: must_be_immutable
 class Game extends StatefulWidget {
@@ -22,43 +23,51 @@ class _GameState extends State<Game> {
       body: Stack(
         children: <Widget>[
           Mapa(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                child: Container(
+          Column(children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: Container(
                     height: 50,
                     color: Colors.red,
-                    child: FutureBuilder<Rutas>(
-                      future: widget.ruta,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          print(snapshot.data);
-                          print(snapshot.data.nombre);
-                          return Text(snapshot.data.nombre);
-                        } else if (snapshot.hasError) {
-                          return Text(snapshot.error);
-                        }
-                        return CircularProgressIndicator();
-                      },
-                    )),
-              ),
-              Expanded(
-                child: Container(
-                  height: 50,
-                  color: Colors.green,
-                  child: Text("Ruta del rosco"),
+                    child: Center(child: Text("asdkfksj")),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  height: 50,
-                  color: Colors.grey,
-                  child: Text("container3"),
+                Expanded(
+                  child: Container(
+                    height: 50,
+                    color: Colors.green,
+                    child: Center(child: Text("Ruta del rosco")),
+                  ),
                 ),
-              ),
-            ],
-          ),
+                Expanded(
+                  child: Container(
+                    height: 50,
+                    color: Colors.grey,
+                    child: Center(child: Text("container3")),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: new LinearPercentIndicator(
+                    width: MediaQuery.of(context).size.width - 50,
+                    animation: true,
+                    lineHeight: 20.0,
+                    animationDuration: 2000,
+                    percent: 0.0,
+                    center: Text("Completado - 00.0%"),
+                    linearStrokeCap: LinearStrokeCap.roundAll,
+                    progressColor: Colors.greenAccent,
+                  ),
+                ),
+              ],
+            )
+          ])
         ],
       ),
     );

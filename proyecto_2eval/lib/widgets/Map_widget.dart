@@ -24,42 +24,12 @@ class _Mapa extends State<Mapa> {
       _controller.complete(controller);
     }
 
-    return Stack(
-      children: <Widget>[
-        GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(43.4219999, -1.0862462),
-            zoom: 15,
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Expanded(
-              child: Container(
-                height: 50,
-                color: Colors.red,
-                child: Text("Tiempo"),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                height: 50,
-                color: Colors.green,
-                child: Text("Ruta del rosco"),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                height: 50,
-                color: Colors.grey,
-                child: Text("container3"),
-              ),
-            ),
-          ],
-        ),
-      ],
+    return GoogleMap(
+      onMapCreated: _onMapCreated,
+      initialCameraPosition: CameraPosition(
+        target: LatLng(43.346868, -1.796799),
+        zoom: 15,
+      ),
     );
   }
 
