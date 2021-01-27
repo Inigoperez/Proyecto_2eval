@@ -23,7 +23,25 @@ class _GameState extends State<Game> {
       body: Stack(
         children: <Widget>[
           Mapa(),
-          Column(children: [
+          Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: new LinearPercentIndicator(
+                    width: MediaQuery.of(context).size.width - 50,
+                    animation: true,
+                    lineHeight: 20.0,
+                    animationDuration: 2000,
+                    percent: 0.10,
+                    center: Text("Completado - 00.0%"),
+                    linearStrokeCap: LinearStrokeCap.roundAll,
+                    progressColor: Colors.green,
+                    backgroundColor: Colors.greenAccent[100],
+                  ),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -60,24 +78,6 @@ class _GameState extends State<Game> {
                     height: 60,
                     color: Colors.grey,
                     child: Center(child: Text("Cronometro")),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: new LinearPercentIndicator(
-                    width: MediaQuery.of(context).size.width - 50,
-                    animation: true,
-                    lineHeight: 20.0,
-                    animationDuration: 2000,
-                    percent: 0.10,
-                    center: Text("Completado - 00.0%"),
-                    linearStrokeCap: LinearStrokeCap.roundAll,
-                    progressColor: Colors.green,
-                    backgroundColor: Colors.greenAccent[100],
                   ),
                 ),
               ],

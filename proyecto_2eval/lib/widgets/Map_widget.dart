@@ -19,18 +19,34 @@ class _Mapa extends State<Mapa> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
+
     Completer<GoogleMapController> _controller = Completer();
     void _onMapCreated(GoogleMapController controller) {
       _controller.complete(controller);
     }
 
-    return GoogleMap(
-      onMapCreated: _onMapCreated,
-      initialCameraPosition: CameraPosition(
-        target: LatLng(43.346868, -1.796799),
-        zoom: 15,
-      ),
-    );
+    if (_currentPosition == null) {
+      return GoogleMap(
+        onMapCreated: _onMapCreated,
+        myLocationEnabled: true,
+        myLocationButtonEnabled: true,
+        initialCameraPosition: CameraPosition(
+          //target: LatLng(_currentPosition.latitude, _currentPosition.longitude),
+          target: LatLng(43.346868, -1.796799),
+          zoom: 15,
+        ),
+      );
+    } else {
+      return GoogleMap(
+        onMapCreated: _onMapCreated,
+        myLocationEnabled: true,
+        myLocationButtonEnabled: true,
+        initialCameraPosition: CameraPosition(
+          target: LatLng(_currentPosition.latitude, _currentPosition.longitude),
+          zoom: 15,
+        ),
+      );
+    }
   }
 
   _getCurrentLocation() {
@@ -41,6 +57,10 @@ class _Mapa extends State<Mapa> {
         .then((Position position) {
       setState(() {
         _currentPosition = position;
+        print("lat:" +
+            _currentPosition.latitude.toString() +
+            "lng:" +
+            _currentPosition.longitude.toString());
       });
     }).catchError((e) {
       print(e);
